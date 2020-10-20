@@ -6,4 +6,3 @@
 
 // * all these apply only with the log subscript with 2. 
 
- 
