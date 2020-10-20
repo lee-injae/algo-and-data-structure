@@ -1,4 +1,4 @@
-let names = ["Micaehl", "Melissa", "Andrea"];
+let names = ["Michael", "Melissa", "Andrea"];
 let values = [true, {}, [], 2, "awesome"];
 
 // Insertion - depends
