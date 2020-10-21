@@ -1,0 +1,46 @@
+What is Algorithm?
+
+    a process or a set of steps to accomplish a certain task
+
+INTERVIEW!
+
+Methods
+1. Devise a plan for solving problems
+2. Master common problem solving patterns
+
+
+Problem solving
+-Understand the problem 
+-Explore Concrete Examples
+-Break it Down
+-Solve/Simplify
+-Look Back and Refactor
+
+
+Undestand the Problem
+1. Can I restat the problem in my own words?
+2. What are the inputs that go into the problem?
+3. What are the outputs that should come from the solution to the problem? 
+4. Can the outputs be determined from the inputs? Do you have enough information
+to solve the problem? 
+5. How should I label the important pieces of data that are a part of the problem
+
+============================================================
+Example)
+Write a function which takes two numers and returns their sum. 
+=============================================================
+
+
+1. implement addition
+2. what about the inputs are extremely large integers? or floats, strings? 
+3. is it a string? integer? floats? 
+4. what if someone only give one input or four?
+5. 
+
+
+Explore Examples
+1. start with simples Examples
+2. Progress to more complex Examples
+3. explore examples with empty inputs
+4. explore examples with invalid inputs
+
