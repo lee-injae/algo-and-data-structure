@@ -1,0 +1,60 @@
+// Open Tickets are defined by open braces. 3 open tickets of diferent types are represented as  {,[,(
+// each Open Ticket must be closed by it's corresponding closing brace. {},[],()
+// open tickets must be closed in the same order to be "balanced". if you have an input of {[( it must be closed as {[()]}
+// The input is an array of arrays and the size of the array may vary. [ ["[[{()}]]"], ["{[]]}"], ["[{{}"] ]
+// in this problem, for each item in the array, we have to return an array of strings that include, "YES" if an individual item is "balanced" or "NO" if it isn't 
+// each index of the returned array must correspond to each index of the input array.
+// input = [ ["[[{()}]]"], ["{[]]}"], ["[{{}]}]"], ["[{}]"] ]
+// expected output = ["YES", "NO" ,"NO", "YES"]
+
+let rightObj = {
+  "{": "}",
+  "[": "]",
+  "(": ")"
+}
+
+let input = [ ["[[{()}]]"], ["{[]]}"], ["[{{}]}]"], ["[{}]"] ]
+// expected output = ["YES", "NO" ,"NO", "YES"]
+
+function isItBalanced(input){
+  return input.map(arr => {
+    let firstHalf = arr[0].slice(0, Math.floor(arr[0].length/2))
+    let lastHalf = arr[0].slice(Math.floor(arr[0].length/2))
+    let checkHalf = firstHalf.split("").reverse();
+    for (let i = 0; i < checkHalf.length; i++) {
+      if (rightObj[checkHalf[i]] !== lastHalf[i]) {
+        return "NO";
+      }
+    }
+    return "YES";
+  })
+}
+
+function isItBalancedTwoPointers(input){
+  return input.map(arr => {
+    let str = arr[0];
+    let first = 0;
+    let last = str.length - 1;
+    while (first <= last) {
+      if (str[last] === rightObj[str[first]]){
+        first++;
+        last--;
+      } else {
+        return "NO";
+      }
+    }
+    return "YES";
+  })
+}
+
+console.log("Brute force", isItBalanced(input));
+console.log("two pointers", isItBalancedTwoPointers(input));
+
+
+I plan on making a larger post about this later but I revised the common STAR method for answering interview questions. STAR (situation task action result) over indexes on the context without zooming in on the impact. Therefore, I came up with the SAIL framework instead (situation action impact learnings) to more closely align with what interviewers are looking for when they ask questions.
+Situational context (briefly). No one needs to know the inner workings of your previous employers. They need to know that your actions there translate to good work here if they hire you.
+Action you took. Don’t claim ownership over a team effort nor let your ownership get diluted by incorrectly using “we” on things that you specifically did.
+Impact of your actions, ideally in measured form but qualitative results work too. How do you know that what you did was worth anyone’s time and how do you know that it was the right action to take?
+Learnings regardless of whether it was the right action or not, but especially if the outcome wasn’t what you expected. Employ a growth mindset and demonstrate reflection and intentionality about your work.
+
+
