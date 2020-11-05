@@ -1,0 +1,61 @@
+Program to print unique elements of an string present on odd position, along with the count of those elements in the entire string
+i.e abbloseckc - a:1,b:2,o:1,e:1,k:1 
+
+function printOdd(string) {
+    let Odd = []
+        for (i=0 ; i < string.length ; i++) {
+            if ( string.indexOf(string[i]) % 2 !== 0 )     
+              {
+                Odd = Odd.push(string[i])
+              }
+    //making an object to return
+    let result = {}
+    // loop over Odd array
+      for (i = 0; i < Odd.length ; i++) {
+          let char = Odd[i] 
+            if (result[char] > 0) {
+                result[char]++
+            }
+            else { result[char] = 1
+            }
+          }
+      return result 
+     }
+   }
+    
+          
+           
+       
+Write a function that given a list of countries, returns the country(s) that occur the least times
+i.e - ["Argentina", "Cuba", "Chile", "Argentina"] -> ["Cuba", "Chile"]
+
+//make an object
+//loop over an array
+//check whether the number of occurance of same strings
+//compare the occurance number and push the string of //lowest occurance number into the result array 
+//return the result array
+
+
+function leastOccurance(array) {
+    let countries = {}
+        for ( i = 0 ; i < array.length ; i++) {
+            let country = array[i];
+            if (countries[country] > 0) {
+                countries++;
+                }
+            else {
+                counrtries[country]
+                }
+            }
+        //make an array of occurance numbers
+    let occuranceNumbers = Object.keys(countries);
+    occuranceNumber.sort((a, b) => a - b);
+    occuranceNumber[0]
+    
+       
+
+
+write a function that checks if two provided strings are anagrams of each other; letter casing shouldn’t matter. Also, consider only characters, not spaces or punctuation. For example
+function('finder', 'Friend')  --> true
+function('hello', 'bye') --> false
+
