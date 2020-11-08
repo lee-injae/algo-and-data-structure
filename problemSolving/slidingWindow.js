@@ -12,22 +12,60 @@
 
 function maxSubarraySum(arr,n){
     let sum = 0
-    for (i = 0 ; i < arr.length - (n - 1)); i++){
+    for (i = 0 ; i < arr.length - n + 1; i++){
         for (j = 1; j < n; j++){
-            if (n - j > 0) {
-                newSum = arr[i] + arr[j] 
-            }
-              
+            // if (n - j > 0) {
+                 newSum = arr[i+j] 
+                 
             if (sum < newSum){
                 sum = newSum
             }
+            console.log(newSum,sum)
         }
     }
     console.log(sum)
     return sum
 }
 
-maxSubarraySum([1,2,1,3,5,6,3],3)
+
+//colt's naive answer ->nested loop...
+function maxSubarraySum(arr,num) {
+    if (num > arr.length) {
+        return null
+    }
+    var max = -Infinity;
+    for (let i = 0; i < arr.length - num + 1; i++) {
+        temp = 0;
+        for(let j = 0; j < num; j++) {
+            temp +=arr[i+j] 
+        }
+        if (temp > max) {
+            max = temp;
+        }
+        console.log(temp,max)
+    }
+    return max
+}
+
+//slidingWindow approach
+
+function maxSubarraySum(arr,n){
+    let maxSum = 0;
+    let tempSum = 0;
+    if (n > arr.length) return null;
+    for (let i = 0; i < n ; i++) {
+        maxSum += arr[i] 
+    }
+    tempSum = maxSum
+    for (let i = n; i < arr.length; i++ ) {
+        tempSum = tempSum - arr[i-n] + arr[i];
+        maxSum = Math.max(maxSum, tempSum);
+    }
+    return maxSum
+}
+
+maxSubarraySum([1,2,1,3,5,6,4,7,8],4)
+
 
 
 
