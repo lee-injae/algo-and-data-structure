@@ -80,13 +80,41 @@ function countUniqueValues(arr){
     return arr.length
 }
 
-//with more hints
+//with more hints (works-> but splice is another O(N) inside while loop so it makes N^2 which
+//is not the ideal solution
 
 function countUniqueValues(arr) {
     let i = 0 
     let j = 1
 
-    for (i = )
+    while (j < arr.length) {
+        if (arr[i] === arr[j]) {
+            j++;
+        } else {
+            arr.splice(arr[i],1,arr[j])
+            i++
+            j++
+        }
+    }
+    return i + 1;
 }
-countUniqueValues([1,1,2,2,2,3,4,4,5,5,5])
 
+
+function countUniqueValues(arr){
+    if(arr.length === 0 ) {
+        return 0;
+    }
+    let i = 0;
+    for (let j = 1; j <arr.length; j++) {
+        if(arr[i] !== arr[j]){
+            i++;
+            arr[i] = arr[j];
+        }
+        console.log(i,j)
+
+    }
+    console.log(i+1)
+    return i + 1
+}
+
+countUniqueValues([1,2,2,3,3])
