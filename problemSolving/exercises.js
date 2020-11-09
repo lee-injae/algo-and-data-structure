@@ -21,12 +21,12 @@ function sameFrequency(num1, num2) {
     //     counter[digit] = (counter[digit] || 0) + 1 
     // }
     //or 
-    for(i = 0; i < s1.length; i++){
+    for(let i = 0; i < s1.length; i++){
         let digit = s1[i]
         counter[digit] ? counter[digit] += 1 : counter[digit] = 1;   
     }
 
-    for (i = 0; i < s2.length; i++){ 
+    for (let i = 0; i < s2.length; i++){ 
         let digit = s2[i]
         if (!counter[digit]) {
             return false
@@ -67,3 +67,106 @@ function sameFrequency(num1, num2) {
 
 
 sameFrequency(1233,3213)
+
+//Implement a function called , areThereDuplicates which accepts a variable number of arguments
+//, and checks whether there are any duplicates among the arguments passed in. You can solve 
+//this using the frequency counter pattern OR the multiple pointers pattern.
+
+//Examples: 
+//areThereDuplicates(1,2,3) //false
+//areThereDuplicates(1,2,2) //true
+//areThereDuplicates('a','b','c','a') //true
+
+//frequency counter pattern -> works
+
+function areThereDuplicates(){
+    let collection = {}
+    for (let val in arguments){
+        collection[arguments[val]] = ++collection[arguments[val]] || 1
+    }
+    for(let key in collection){
+        if(collection[key] > 1) return true
+    }
+    return false
+}
+
+function areThereDuplicates(...arg) {
+    let size = arg.length;
+    let lookup = {};
+    for (let i = 0; i < size; i++) {
+      let word = arg[i];
+      if (lookup[word]) {
+        return true;
+      } else lookup[word] = 1;
+    }
+    return false;
+  }
+  
+//Multiple Pointers pattern
+
+function areThereDuplicates(...args){
+      args.sort((a,b) => a - b);
+      let start = 0;
+      let next = 1;
+        while(next < args.length){
+            if(args[start] === args[next]){
+                return true
+        }
+        start++
+        next++
+    }
+    return false
+  }
+
+//fixes the edge - ex argumets of (1,'1',[1])
+function areThereDuplicates(...args) {
+    const lookup = {};
+   
+    for (const arg of args) {
+      if (lookup[arg + typeof arg]) return true;
+      lookup[arg + typeof arg] = 1;
+    }
+    return false;
+  }
+// alternate edge solving answer
+
+const areThereDuplicates = (...args) => {
+    const frequency = {};
+ 
+    for (let value of args) {
+        if (frequency[value.toString()]) {
+            return true
+        }
+        frequency[value.toString()] = true;
+    }
+
+    return false
+}
+
+//another alternative of weeding out edge case, my favorite
+
+function areThereDuplicates(...args){
+    //No args, only 1 arg, no need to loop exit early 
+     if(args.length < 2){
+         return false;
+     }
+     
+     let freq = {}
+  
+     for(let i = 0; i < args.length; i++){
+         let key = args[i];
+         
+         //Key already exists, exit early
+         if(key in freq){
+             return true;
+         }else{
+             //Can be any value, only the key existing matters
+             freq[key] = 1;
+         }
+     }
+  
+     //Return by default as no early exit
+     return false;
+ }
+
+
