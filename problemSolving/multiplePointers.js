@@ -99,7 +99,7 @@ function countUniqueValues(arr) {
     return i + 1;
 }
 
-
+//best solution
 function countUniqueValues(arr){
     if(arr.length === 0 ) {
         return 0;
