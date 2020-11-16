@@ -180,6 +180,55 @@ function areThereDuplicates(...args){
  //averagePair([-1,0,3,4,5,6], 4.1) //false
  //averagePair([],4) // false
 
- 
+ // my initial solution -> works!
+function averagePair(arr, avg) {
+    if (arr.length < 2) return false;
+     
+    let i = 0;
+    let j = 1;
+   
+    while ( i < j && j < arr.length) {
+        if (((arr[i] + arr[j]) / 2) === avg) {
+            return true
+        } else if (j === arr.length - 1) {
+            i++;
+            j = i + 1
+        } else {
+            j++
+        }
+    }
+    return false
+}
+
+//my next approach -> wrong
+
+function averagePair(arr, avg) {
+    if (arr.length < 2) return false;
+     
+    let i = 0;
+    for (j = 1; j < arr.length; j++)
+        if (((arr[i] + arr[j]) / 2) === avg) {
+            console.log(arr[i]+arr[j])
+            return true
+        } else if (j === arr.length - 1) {
+            i++
+            j = i + 1
+        }
+    return false
+}
+        
+averagePair([1,3,3,5,6,7,10,12,19], 8)
+        
+
+//Write a function called isSubsequence which takes in two strings and checks whether the characters
+//in the first string form a subsequence of the characters in the second string. In other words, 
+//the function should check whether the characters in the first string appear somewhere in the second
+//string, without their order changing. 
+
+//Examples:
+//isSubsequence('hello', 'hello world') //true
+//isSubsequence('sing, 'sting') // true
+//isSubsequence('abc', 'abracadabra') // true
+//isSubsequence('abc', 'acb') // flase(order matters)
 
 
